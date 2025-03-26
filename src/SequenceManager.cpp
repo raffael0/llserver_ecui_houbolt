@@ -138,7 +138,6 @@ void SequenceManager::SetupLogging()
     strftime(dateTime_string, 100, "%Y_%m_%d__%H_%M_%S", curr_tm);
 
     currentDirPath = "logs/" + std::string(dateTime_string);
-
     this->lastDir = currentDirPath;
     logFileName = std::string(dateTime_string) + ".csv";
     std::experimental::filesystem::create_directory("logs");
@@ -415,8 +414,7 @@ void SequenceManager::sequenceLoop(int64_t interval_us)
 		syncMtx.lock();
 
 		//log nominal ranges
-
-        for (const auto &sensor : sensorsNominalRangeMap)
+		for (const auto &sensor : sensorsNominalRangeMap)
 		{
 			msg += std::to_string(sensor.second.begin()->second[0]) + ";";
 			msg += std::to_string(sensor.second.begin()->second[1]) + ";";
