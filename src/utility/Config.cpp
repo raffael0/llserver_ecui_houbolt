@@ -17,6 +17,7 @@ Config::Config(std::string configPath)
 	}
 	catch(const std::exception& e)
 	{
+		std::cerr << configPath << std::endl;
 		std::cerr << "config file parsing failed; " << Config::configFilePath << std::endl;
         std::cerr << e.what() << std::endl;
 		exit(1);
